@@ -25,7 +25,7 @@ public class C1025_ConstructingNew {
 			}
 			int[] seq = new int[count];
 			for (int i = 0; i < count; i++) {
-				seq[i] = citiLMap.get(positionRArr[i - 1]);
+				seq[i] = citiLMap.get(positionRArr[i]);
 			}
 			int roads = findRoads(seq);
 			System.out.printf("Case %d:", testcase);
@@ -40,25 +40,50 @@ public class C1025_ConstructingNew {
 		}
 		sc.close();
 	}
-
-	private static int findRoads(int[] seq) {
+	
+	public static int findRoads(int[] seq) {
 		int totalLength = 1;
-		int index = 1;
+		int index = 0;
 		int length = seq.length;
 		int[] ret = new int[length];
-		ret[index - 1] = seq[0];
+		ret[index] = seq[0];
 		for (int i = 1; i < length; i++) {
-			if(seq[i] > ret[index - 1]) {
+			int currentNumber = seq[i];
+			if(currentNumber > ret[index]) {
 				index++;
-				ret[index - 1] = seq[i];
-				if(index > length) {
-					length = index;
+				ret[index] = currentNumber;
+				if(index + 1 > totalLength) {
+					totalLength = index + 1;
 				}
 			} else {
-				
+				int find = FindRoad.$.searchFirstLarge(ret, currentNumber, 0, index);
+				ret[find] = currentNumber;
+				index = find;
 			}
 		}
-		return index;
+		return totalLength;
 	}
 
+}
+
+enum FindRoad {
+	$;
+
+	public int searchFirstLarge(int[] ret, int find, int start, int end) {
+		if(start > end) {
+			return start;
+		}
+		int mid = (start + end) / 2;
+		if(find < ret[mid]) {
+			if(start == mid) {
+				return start;
+			}
+			return searchFirstLarge(ret, find, start, mid);
+		} else {
+			if(end == mid + 1) {
+				return end;
+			}
+			return searchFirstLarge(ret, find, mid, end);
+		}
+	}
 }
