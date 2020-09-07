@@ -58,3 +58,6 @@ s[8]=7<a[5]=8，对数组进行递归，查找第一个大于s[8]的数字，替
 在遍历每个节点的过程中，在当前节点信息Status对象中，保存父节点信息，使之成为单向链表。<br>
 #### 当需要在某一处节点需要时间惩罚时该如何处理
 该节点信息Status加入cost时间信息，当未达到惩罚时间时，cost时间增加，将变化后的新节点信息Status加入到队列中。因此后续队列中读取到的数据依然是该节点信息，只不过是停留n秒之后的状态。
+
+## [1027 Ignatius and the Princess II](http://acm.hdu.edu.cn/showproblem.php?pid=1027)
+参考[逆康托展开](https://blog.csdn.net/qq_40061421/article/details/81915838).
