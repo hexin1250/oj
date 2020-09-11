@@ -93,3 +93,6 @@ X = 2 * 4! + 2 * 3! + 0 * 2! + 1 * 1! + 0 * 0!
 * 如果a在上区，b在下区，则结果+1，同时a与b的索引差值大于(l2-l1+1)或小于0，则结果+Math.abs(offset-(l2-l1+1))*2。
 * 如果a在下区，b在上区，则结果-1，同时a与b的索引差值大于(l2-l1-1)或小于0，则结果+Math.abs(offset-(l2-l1-1))*2。
 * 如果a和b同区，则a与b的索引差值大于(l2-l1)或小于0，则结果+Math.abs(offset-(l2-l1))*2。
+
+## [1037 Keep on Truckin'](http://acm.hdu.edu.cn/showproblem.php?pid=1037)
+题意：找到第一个小于等于168的高度，输出。。。
