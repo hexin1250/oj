@@ -96,3 +96,7 @@ X = 2 * 4! + 2 * 3! + 0 * 2! + 1 * 1! + 0 * 0!
 
 ## [1037 Keep on Truckin'](http://acm.hdu.edu.cn/showproblem.php?pid=1037)
 题意：找到第一个小于等于168的高度，输出。。。
+
+## [1042 N!](http://acm.hdu.edu.cn/showproblem.php?pid=1042)
+大数相乘问题，按位进行乘法，然后相加进位。<br>
+注：为了提高效率，应每3位或4位进行相乘，以较少乘法和加法次数。
