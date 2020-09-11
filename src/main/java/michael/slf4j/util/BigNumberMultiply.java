@@ -1,7 +1,6 @@
 package michael.slf4j.util;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class BigNumberMultiply {
 	private static final int BIT = 3;
