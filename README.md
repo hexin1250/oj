@@ -1,8 +1,7 @@
 # oj
 ---
 记录在oj上解题的思路，以便温习。<br>
-Record my thought how to solve the problems, in case I can review these later.<br>
-oj链接为[杭州电子科技大学oj网站](http://acm.hdu.edu.cn/listproblem.php?vol=1)。
+[杭州电子科技大学oj网站](http://acm.hdu.edu.cn/listproblem.php?vol=1)对应的package是michael.slf4j.learning.hdu。
 
 ## [1002 A + B Problem II](http://acm.hdu.edu.cn/showproblem.php?pid=1002)
 大数相加问题。将字符串数字转换成数组，然后对位相加即可。<br>
