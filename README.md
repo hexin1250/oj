@@ -100,3 +100,16 @@ X = 2 * 4! + 2 * 3! + 0 * 2! + 1 * 1! + 0 * 0!
 ## [1042 N!](http://acm.hdu.edu.cn/showproblem.php?pid=1042)
 大数相乘问题，按位进行乘法，然后相加进位。<br>
 注：为了提高效率，应每3位或4位进行相乘，以较少乘法和加法次数。
+
+## [1045 Fire Net](http://acm.hdu.edu.cn/showproblem.php?pid=1045)
+深度优先搜索问题
+### 解题思路
+* 找出每一个点的与之关联的所有节点，生成relationMap关系图。
+* 优先过滤出relationMap中相关节点数为0的节点，这代表该节点没有任何与之相邻的节点，直接计数并从遍历列表中删除该节点。
+* 在剩余节点中逐个访问节点：
+	* 获取该节点p的关联节点列表relationSet。
+	* 对relationSet和当前遍历节点列表tmpSet取交集crossSet。
+	* crossSet中添加当前当前节点p。
+	* 当前这一步放置，计数+1，同时在当前节点列表tmpSet中删除crossSet中的全部节点，进行深度优先搜索。
+	* 搜索结束，重新将crossSet中的节点加入当前节点列表tmpSet。
+* 循环结束，找到最大值。
