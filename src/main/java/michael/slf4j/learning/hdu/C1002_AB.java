@@ -25,6 +25,22 @@ public class C1002_AB {
 	}
 	
 	public static String plus(int[] a, int[] b) {
+		int[] ret = plusArray(a, b);
+		int length = a.length > b.length ? a.length + 1 : b.length + 1;
+		StringBuffer sb = new StringBuffer();
+		boolean start = false;
+		for (int i = length - 1; i >= 0; i--) {
+			if(!start && ret[i] == 0) {
+				continue;
+			} else {
+				start = true;
+			}
+			sb.append(ret[i]);
+		}
+		return sb.toString();
+	}
+	
+	public static int[] plusArray(int[] a, int[] b) {
 		int length = a.length > b.length ? a.length + 1 : b.length + 1;
 		int[] ret = new int[length];
 		for (int i = 0; i < length; i++) {
@@ -39,17 +55,7 @@ public class C1002_AB {
 				ret[i] = ret[i] % 10;
 			}
 		}
-		StringBuffer sb = new StringBuffer();
-		boolean start = false;
-		for (int i = length - 1; i >= 0; i--) {
-			if(!start && ret[i] == 0) {
-				continue;
-			} else {
-				start = true;
-			}
-			sb.append(ret[i]);
-		}
-		return sb.toString();
+		return ret;
 	}
 
 	private static int[] getArray(String s) {
