@@ -39,7 +39,7 @@ public class BigNumberMultiply {
 	
 	private static int[] nOfArray(int a) {
 		int index = 0;
-		int[] a1 = new int[6];
+		int[] a1 = new int[10];
 		while(a / 10 > 0) {
 			if(a / 10 > 0) {
 				a1[index] = a % 10;
