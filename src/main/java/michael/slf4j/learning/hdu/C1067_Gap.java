@@ -97,6 +97,7 @@ public class C1067_Gap {
 				/**
 				 * 交换当前empty position和targetP
 				 */
+				boolean prevStatus = maze.isInPosition(targetN, targetP.x, targetP.y);
 				maze.map[x][y] = targetN;
 				maze.map[targetP.x][targetP.y] = 29;
 				/**
@@ -104,6 +105,8 @@ public class C1067_Gap {
 				 */
 				if(maze.isInPosition(targetN, x, y)) {
 					status--;
+				} else if(prevStatus) {
+					status++;
 				}
 				positionMap.put(targetN, new Position(x, y));
 				/**
@@ -124,10 +127,12 @@ public class C1067_Gap {
 				 * 回滚之前的操作
 				 */
 				tmpSet.remove(targetP);
+				positionMap.remove(targetN);
 				if(maze.isInPosition(targetN, x, y)) {
 					status++;
+				} else if(prevStatus) {
+					status--;
 				}
-				positionMap.remove(targetN);
 				maze.map[x][y] = 29;
 				maze.map[targetP.x][targetP.y] = targetN;
 				positionMap.put(targetN, targetP);
@@ -189,6 +194,9 @@ public class C1067_Gap {
 			return status;
 		}
 		public boolean isInPosition(int n, int tx, int ty){
+			if(n == 29) {
+				return false;
+			}
 			int x = n / 10;
 			int y = n % 10;
 			return (x - 1 == tx && y - 1 == ty);
