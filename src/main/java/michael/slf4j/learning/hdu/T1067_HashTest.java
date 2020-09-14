@@ -50,7 +50,7 @@ public class T1067_HashTest {
 			}
 			mem[i] = 1;
 			long n = a[i];
-			long v = bfsMax(a, mem, hash + n * ((long)Math.pow(a.length + 2, step)), step + 1);
+			long v = bfsMax(a, mem, hash + n * ((long)Math.pow(a.length, step)), step + 1);
 			if(v > max) {
 				max = v;
 			}
@@ -70,7 +70,7 @@ public class T1067_HashTest {
 			}
 			mem[i] = 1;
 			long n = a[i];
-			long v = bfsMin(a, mem, hash + n * ((long)Math.pow(a.length + 2, step)), step + 1);
+			long v = bfsMin(a, mem, hash + n * ((long)Math.pow(a.length, step)), step + 1);
 			if(v < min) {
 				min = v;
 			}
