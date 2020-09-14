@@ -35,7 +35,7 @@ public class C1067_Gap {
 		private Map<Integer, Position> positionMap;
 		private Set<Position> emptySet = new HashSet<>();
 		private int status;
-		private Map<Maze, Integer> mem = new HashMap<>();
+		private Map<Long, Integer> mem = new HashMap<>();
 		
 		public Process(Maze maze, Map<Integer, Position> positionMap){
 			this.maze = maze;
@@ -62,7 +62,7 @@ public class C1067_Gap {
 			for (Position p : emptySet) {
 				int x = p.x;
 				int y = p.y;
-				if(!(maze.map[x][y - 1] == 0 || maze.map[x][y - 1] % 10 == 7)) {
+				if(!(maze.map[x][y - 1] == 29 || maze.map[x][y - 1] % 10 == 7)) {
 					noChoice = false;
 					break;
 				}
@@ -76,6 +76,10 @@ public class C1067_Gap {
 			if(cost >= min && min != -1) {
 				return -1;
 			}
+			long hash = maze.myHashCode();
+			if(mem.get(hash) != null) {
+				return mem.get(hash);
+			}
 			Set<Position> tmpSet = new HashSet<>();
 			tmpSet.addAll(emptySet);
 			int currentMin = min;
@@ -84,7 +88,7 @@ public class C1067_Gap {
 				int y = p.y;
 				int prevN = maze.map[x][y - 1];
 				int targetN = prevN + 1;
-				if(prevN == 0 || prevN % 10 == 7) {
+				if(prevN == 29 || prevN % 10 == 7) {
 					continue;
 				}
 				
@@ -94,7 +98,7 @@ public class C1067_Gap {
 				 * 交换当前empty position和targetP
 				 */
 				maze.map[x][y] = targetN;
-				maze.map[targetP.x][targetP.y] = 0;
+				maze.map[targetP.x][targetP.y] = 29;
 				/**
 				 * 判断移动之后是否在正确的位置上
 				 */
@@ -110,12 +114,7 @@ public class C1067_Gap {
 				 * 深度优先遍历
 				 */
 				int ret = -1;
-				if(mem.get(maze) != null) {
-					ret = mem.get(maze.copy());
-				} else {
-					ret = bfs(tmpSet, status, cost + 1, currentMin);
-					mem.put(maze.copy(), ret);
-				}
+				ret = bfs(tmpSet, status, cost + 1, currentMin);
 				if(ret != -1) {
 					if(currentMin == -1 || ret < currentMin) {
 						currentMin = ret;
@@ -129,45 +128,46 @@ public class C1067_Gap {
 					status++;
 				}
 				positionMap.remove(targetN);
-				maze.map[x][y] = 0;
+				maze.map[x][y] = 29;
 				maze.map[targetP.x][targetP.y] = targetN;
 				positionMap.put(targetN, targetP);
 				tmpSet.add(p);
 			}
+			mem.put(hash, currentMin);
 			return currentMin;
 		}
-
+		
 		private void init() {
 			Position p1 = positionMap.remove(11);
 			maze.map[0][0] = 11;
-			maze.map[p1.x][p1.y] = 0;
+			maze.map[p1.x][p1.y] = 29;
 			emptySet.add(p1);
 			positionMap.put(11, new Position(0, 0));
 			
 			Position p2 = positionMap.remove(21);
 			maze.map[1][0] = 21;
-			maze.map[p2.x][p2.y] = 0;
+			maze.map[p2.x][p2.y] = 29;
 			emptySet.add(p2);
 			positionMap.put(21, new Position(1, 0));
 			
 			Position p3 = positionMap.remove(31);
 			maze.map[2][0] = 31;
-			maze.map[p3.x][p3.y] = 0;
+			maze.map[p3.x][p3.y] = 29;
 			emptySet.add(p3);
 			positionMap.put(31, new Position(2, 0));
 			
 			Position p4 = positionMap.remove(41);
 			maze.map[3][0] = 41;
-			maze.map[p4.x][p4.y] = 0;
+			maze.map[p4.x][p4.y] = 29;
 			emptySet.add(p4);
 			positionMap.put(41, new Position(3, 0));
 		}
 		
 		public void close() {
 			this.emptySet.clear();
-			this.mem.clear();
 			this.positionMap.clear();
 			this.maze = null;
+			this.mem.clear();
 		}
 	}
 
@@ -193,42 +193,24 @@ public class C1067_Gap {
 			int y = n % 10;
 			return (x - 1 == tx && y - 1 == ty);
 		}
-		@Override
-		public int hashCode() {
-			int sum = 0;
+		public long myHashCode() {
+			int total = 0;
 			for (int i = 0; i < h; i++) {
+				total *= 30L;
+				int sum = 0;
 				for (int j = 0; j < w; j++) {
-					int multiply = (i + 1) * 10 + (j + 1);
-					multiply *= Math.pow(10, i);
-					sum += map[i][j] * multiply;
+					sum *= 8;
+					sum += decode(map[i][j]);
 				}
+				total += sum;
 			}
-			return sum;
+			return total;
 		}
-		@Override
-		public boolean equals(Object obj) {
-			if(obj == null) {
-				return false;
+		private int decode(int n) {
+			if(n != 29) {
+				return (n / 10 - 1) * 7 + n % 10;
 			}
-			if(!(obj instanceof Maze)) {
-				return false;
-			}
-			Maze m = (Maze) obj;
-			for (int i = 0; i < h; i++) {
-				for (int j = 0; j < w; j++) {
-					if(map[i][j] != m.map[i][j]) {
-						return false;
-					}
-				}
-			}
-			return true;
-		}
-		public Maze copy() {
-			int[][] m = new int[h][w];
-			for (int i = 0; i < h; i++) {
-				m[i] = map[i];
-			}
-			return new Maze(m);
+			return 29;
 		}
 	}
 	
