@@ -21,8 +21,10 @@ public class C1002_AB {
 	}
 	
 	public static String plus(String s1, String s2) {
-		int[] a = getArray(s1);
-		int[] b = getArray(s2);
+		return plus(getArray(s1), getArray(s2));
+	}
+	
+	public static String plus(int[] a, int[] b) {
 		int length = a.length > b.length ? a.length + 1 : b.length + 1;
 		int[] ret = new int[length];
 		for (int i = 0; i < length; i++) {
