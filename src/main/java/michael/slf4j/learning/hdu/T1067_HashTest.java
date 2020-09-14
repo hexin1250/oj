@@ -19,13 +19,6 @@ public class T1067_HashTest {
 		long bMin = bfsMin(b, mem, 0L, 0);
 		long bMax = bfsMax(b, mem, 0L, 0);
 		System.out.println(bMin + ":" + bMax + ":" + bfs(b, mem, 0L, 0));
-		System.out.println(map.size());
-		
-		long sum = 69504937L;
-		for (long i = 1; i <= 3; i++) {
-			sum *= 30L;
-		}
-		System.out.println(sum);
 	}
 	
 	private static long bfs(long[] a, int[] mem, long hash, int step) {
@@ -57,7 +50,7 @@ public class T1067_HashTest {
 			}
 			mem[i] = 1;
 			long n = a[i];
-			long v = bfsMax(a, mem, hash + n * ((long)Math.pow(a.length, step)), step + 1);
+			long v = bfsMax(a, mem, hash + n * ((long)Math.pow(a.length + 2, step)), step + 1);
 			if(v > max) {
 				max = v;
 			}
@@ -77,7 +70,7 @@ public class T1067_HashTest {
 			}
 			mem[i] = 1;
 			long n = a[i];
-			long v = bfsMin(a, mem, hash + n * ((long)Math.pow(a.length, step)), step + 1);
+			long v = bfsMin(a, mem, hash + n * ((long)Math.pow(a.length + 2, step)), step + 1);
 			if(v < min) {
 				min = v;
 			}
