@@ -30,11 +30,6 @@ public class T1067_HashTest {
 	
 	private static long bfs(long[] a, int[] mem, long hash, int step) {
 		if(step == a.length) {
-//			if(set.contains(hash)) {
-//				System.out.println("Not Enough");
-//			} else {
-//				set.add(hash);
-//			}
 			map.put(hash, 1L);
 			return 1;
 		}
