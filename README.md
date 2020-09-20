@@ -159,3 +159,6 @@ for (int i = 4; i >= 1; i--) {
 ## [1107 武林](http://acm.hdu.edu.cn/showproblem.php?pid=1107)
 不是很难的题，不知道为什么做的人这么少。也不涉及到动态规划／广度优先搜索，老老实实的写好循环就好了，同时注意处理战斗后的移动先加入缓存，以免影响其他格子的处理。<br>
 真就是面向对象的继承和多态呗？用Enum在处理类型是真的方便。好水的题。。。
+
+## [1130 How Many Trees?](http://acm.hdu.edu.cn/showproblem.php?pid=1130)
+[卡塔兰数](https://baike.baidu.com/item/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/6125746?fromtitle=%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0&fromid=9133402&fr=aladdin)，学到了。。。
