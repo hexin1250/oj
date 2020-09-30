@@ -4,6 +4,26 @@ import java.util.Arrays;
 
 public class BigNumberMultiply {
 	private static final int BIT = 3;
+	
+	public static void main(String[] args) {
+		int a = 1234567;
+		int b = 2233445;
+		print(multiply(a, b));
+	}
+	
+	public static void print(int[] arr) {
+		StringBuffer sb = new StringBuffer();
+		boolean start = false;
+		for (int i = arr.length - 1; i >= 0; i--) {
+			if(!start && arr[i] == 0) {
+				continue;
+			} else {
+				start = true;
+			}
+			sb.append(arr[i]);
+		}
+		System.out.println(sb.toString());
+	}
 
 	public static int[] multiply(int a, int b) {
 		return multiply(nOfArray(a), nOfArray(b));

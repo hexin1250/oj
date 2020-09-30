@@ -162,3 +162,6 @@ for (int i = 4; i >= 1; i--) {
 
 ## [1130 How Many Trees?](http://acm.hdu.edu.cn/showproblem.php?pid=1130)
 [卡塔兰数](https://baike.baidu.com/item/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/6125746?fromtitle=%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0&fromid=9133402&fr=aladdin)，学到了。。。
+
+## [1157 Who's in the Middle](http://acm.hdu.edu.cn/showproblem.php?pid=1157)
+给定一个奇数，然后找中位数。
