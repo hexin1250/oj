@@ -177,3 +177,6 @@ dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当�
 
 ## [1194 Beat the Spread!](http://acm.hdu.edu.cn/showproblem.php?pid=1194)
 有两个整数，第一个输入x是两个数的和，第二个输入y是两个数差值的绝对值，求这两个整数。
+
+## [1195 Open the Lock](http://acm.hdu.edu.cn/showproblem.php?pid=1195)
+广度优先搜索问题。
