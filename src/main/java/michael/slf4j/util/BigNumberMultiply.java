@@ -6,9 +6,18 @@ public class BigNumberMultiply {
 	private static final int BIT = 3;
 	
 	public static void main(String[] args) {
-		int a = 1234567;
-		int b = 2233445;
-		print(multiply(a, b));
+		String a = "1234567";
+		String b = "2233445";
+		print(multiply(basedOnStr(a), basedOnStr(b)));
+	}
+	
+	public static int[] basedOnStr(String s) {
+		char[] ch = s.toCharArray();
+		int[] ret = new int[ch.length];
+		for (int i = 0; i < ch.length; i++) {
+			ret[ch.length - i - 1] = ch[i] - '0';
+		}
+		return ret;
 	}
 	
 	public static void print(int[] arr) {
