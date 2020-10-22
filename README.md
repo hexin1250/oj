@@ -175,6 +175,9 @@ dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当�
 ## [1159 Common Subsequence](http://acm.hdu.edu.cn/showproblem.php?pid=1159)
 最长公共子序列问题。[详细解释](https://blog.csdn.net/hrn1216/article/details/51534607)
 
+## [1176 免费馅饼](http://acm.hdu.edu.cn/showproblem.php?pid=1176)
+动态规划问题，下一时刻最大值等于前一时刻的j-1,j,j+1的最大值+当前时间的馅饼数。
+
 ## [1194 Beat the Spread!](http://acm.hdu.edu.cn/showproblem.php?pid=1194)
 有两个整数，第一个输入x是两个数的和，第二个输入y是两个数差值的绝对值，求这两个整数。
 
@@ -183,3 +186,5 @@ dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当�
 
 ## [1199 Color the Ball](http://acm.hdu.edu.cn/showproblem.php?pid=1199)
 我觉得我对了，哈哈
+
+
