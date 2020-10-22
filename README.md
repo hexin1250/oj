@@ -171,3 +171,6 @@ for (int i = 4; i >= 1; i--) {
 首先确定worker中的最大值max和最小值min，然后创建dp数组。<br>
 假设当前月份monthX的worker数为x，那么当前的开销即dpX应该为，上一层的开销为：<br>
 dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当前总数✖(salary)。<br>
+
+## [1159 Common Subsequence](http://acm.hdu.edu.cn/showproblem.php?pid=1159)
+最长公共子序列问题。[详细解释](https://blog.csdn.net/hrn1216/article/details/51534607)
