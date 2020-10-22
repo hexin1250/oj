@@ -167,8 +167,7 @@ for (int i = 4; i >= 1; i--) {
 给定一个奇数，然后找中位数。
 
 ## [1158 Employment Planning](http://acm.hdu.edu.cn/showproblem.php?pid=1158)
-动态规划问题。
-```
-首先确定worker中的最大值max和最小值min，然后创建dp[month][max-min+1]数组。<br>
-假设当前月份monthX的worker数为x，那么当前的开销即dp[monthX][x-min]应该为min(dp[monthX][x-min], 上一层dp[monthX-1][loop from 上一层worker数 to max worker]+差值*(fire or hire)+当前总数*salary)。
-```
+动态规划问题。<br>
+首先确定worker中的最大值max和最小值min，然后创建dp数组。<br>
+假设当前月份monthX的worker数为x，那么当前的开销即dpX应该为，上一层的开销为：<br>
+dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当前总数✖(salary)。<br>
