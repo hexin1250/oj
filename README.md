@@ -174,3 +174,6 @@ dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当�
 
 ## [1159 Common Subsequence](http://acm.hdu.edu.cn/showproblem.php?pid=1159)
 最长公共子序列问题。[详细解释](https://blog.csdn.net/hrn1216/article/details/51534607)
+
+## [1194 Beat the Spread!](http://acm.hdu.edu.cn/showproblem.php?pid=1194)
+有两个整数，第一个输入x是两个数的和，第二个输入y是两个数差值的绝对值，求这两个整数。
