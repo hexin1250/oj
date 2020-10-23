@@ -190,3 +190,6 @@ dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当�
 ## [1199 Color the Ball](http://acm.hdu.edu.cn/showproblem.php?pid=1199)
 我觉得我对了，哈哈
 
+## [1204 糖果大战](http://acm.hdu.edu.cn/showproblem.php?pid=1204)
+y为单局输的概率，x为单局赢的概率。n为自己游泳糖果数，c为所有糖果总数。
+![数据公式](src/main/resources/formula1.jpg)
