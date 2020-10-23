@@ -193,3 +193,11 @@ dp(X-1)(loop from 上一层worker数 to max worker)+差值✖(fire or hire)+当�
 ## [1204 糖果大战](http://acm.hdu.edu.cn/showproblem.php?pid=1204)
 y为单局输的概率，x为单局赢的概率。n为自己游泳糖果数，c为所有糖果总数。
 ![数据公式](src/main/resources/img/formula1.jpg)
+
+## [1208 Pascal's Travels](http://acm.hdu.edu.cn/showproblem.php?pid=1208)
+动态规划+深度优先搜索+记忆搜索
+### 动态规划
+对迷局进行预处理，把所有不可达的点都进行标记，减少搜索时的无效步数。
+
+### 深度优先搜索+记忆搜索
+进行搜索，将结果保存起来。
