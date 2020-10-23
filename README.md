@@ -204,3 +204,7 @@ y为单局输的概率，x为单局赢的概率。n为自己游泳糖果数，c�
 
 ## [1210 Eddy's 洗牌问题](http://acm.hdu.edu.cn/showproblem.php?pid=1210)
 观察数字1的位置，规律为上一次1出现的位置x*2 mod (n*2 + 1)。
+
+## [1212 Big Number](http://acm.hdu.edu.cn/showproblem.php?pid=1212)
+大数求模。<br>
+观察这组数据，v=152455856554521/mod=3250，分别对15245及其结果求模即可得到结果。
