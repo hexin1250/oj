@@ -255,3 +255,6 @@ y为单局输的概率，x为单局赢的概率。n为自己游泳糖果数，c�
 
 ## [1231 最大连续子序列](http://acm.hdu.edu.cn/showproblem.php?pid=1231)
 贪心选择，之前的题目的变种，等于记录序列值。
+
+## [1232 畅通工程](http://acm.hdu.edu.cn/showproblem.php?pid=1232)
+这题和[1213 How Many Tables](http://acm.hdu.edu.cn/showproblem.php?pid=1213)一模一样。
