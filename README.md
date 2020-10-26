@@ -258,3 +258,20 @@ y为单局输的概率，x为单局赢的概率。n为自己游泳糖果数，c�
 
 ## [1232 畅通工程](http://acm.hdu.edu.cn/showproblem.php?pid=1232)
 这题和[1213 How Many Tables](http://acm.hdu.edu.cn/showproblem.php?pid=1213)一模一样。
+
+## [1233 还是畅通工程](http://acm.hdu.edu.cn/showproblem.php?pid=1233)
+最小生成树算法，Prim和Kruskal两种。
+### Prim算法
+假设有n个顶点，0->n-1。随便选一个点为初始顶点，假设取0，加入到eSet中。则重复以下步骤直到eSet size = n。
+1. 遍历eSet中所有顶点，循环遍历所有可达边。
+2. 若边的另外一个点e已经存在与eSet，则跳过。
+3. 选取所有遍历的边的最小值，将其顶点e加入到eSet。
+### Kruskal算法
+假设有n个顶点，m条边。
+1. 将m条边根据v距离进行排序。
+2. 每次选取值v最小的边。若2端顶点已经存在于某一个eSet中，则跳过。
+3. 假设两端顶点为a,b。
+	* 若a和b均不存在于任何一个set，则加入一个新的eSetK。
+	* 若a存在与eSet1，而b不能存在于任何一个其他set，则加b加入eSet1。
+	* 若a存在于eSet1，而b存在于eSet2，则合并eSet1和eSet2。
+4. 重复2/3步骤，直到只有一个eSet，且size=n。
