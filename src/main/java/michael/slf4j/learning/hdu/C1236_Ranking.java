@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class C1236_Ranking {
 
@@ -18,17 +19,12 @@ public class C1236_Ranking {
 				int m = sc.nextInt();
 				int baseLine = sc.nextInt();
 				int[] ques = new int[m];
-				for (int i = 0; i < m; i++) {
-					ques[i] = sc.nextInt();
-				}
+				IntStream.range(0, m).forEach(i -> ques[i] = sc.nextInt());
 				sc.nextLine();
 				List<StudentResult> list = new ArrayList<>();
-				for (int i = 0; i < n; i++) {
+				IntStream.range(0, n).forEach(i -> {
 					String line = sc.nextLine();
 					String[] parts = line.split("[\\s]+");
-					/**
-					 * 考虑是否存在字符串字典序和数字字典序的问题。
-					 */
 					int myQues = Integer.valueOf(parts[1]);
 					int sum = 0;
 					for (int j = 0; j < myQues; j++) {
@@ -38,7 +34,7 @@ public class C1236_Ranking {
 					if(sum >= baseLine) {
 						list.add(new StudentResult(parts[0], sum));
 					}
-				}
+				});
 				Collections.sort(list, new Comparator<StudentResult>() {
 					@Override
 					public int compare(StudentResult o1, StudentResult o2) {
