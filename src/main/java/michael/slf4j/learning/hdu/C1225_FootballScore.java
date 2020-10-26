@@ -16,17 +16,17 @@ public class C1225_FootballScore {
 	public static void main(String[] args) {
 		try (Scanner sc = new Scanner(System.in)) {
 			while(sc.hasNext()) {
-				int n = sc.nextInt();
+				long n = sc.nextLong();
 				sc.nextLine();
 				Map<String, FootballScore> map = new HashMap<>();
-				for (int i = 0; i < (n * (n - 1)); i++) {
+				for (long i = 0; i < (n * (n - 1)); i++) {
 					String line = sc.nextLine();
 					Matcher m = p.matcher(line);
 					if(m.matches()) {
 						String teamA = m.group(1);
 						String teamB = m.group(2);
-						int goalA = Integer.valueOf(m.group(3));
-						int goalB = Integer.valueOf(m.group(4));
+						long goalA = Long.valueOf(m.group(3));
+						long goalB = Long.valueOf(m.group(4));
 						
 						FootballScore sa = map.get(teamA);
 						FootballScore sb = map.get(teamB);
@@ -84,10 +84,10 @@ public class C1225_FootballScore {
 	
 	public static class FootballScore {
 		private String team;
-		public int win = 0;
-		public int tie = 0;
-		public int net = 0;
-		public int total = 0;
+		public long win = 0;
+		public long tie = 0;
+		public long net = 0;
+		public long total = 0;
 		public FootballScore(String team) {
 			this.team = team;
 		}
@@ -97,28 +97,28 @@ public class C1225_FootballScore {
 		public void addTie() {
 			this.tie += 1;
 		}
-		public void addNet(int net) {
+		public void addNet(long net) {
 			this.net += net;
 		}
-		public void addTotal(int total) {
+		public void addTotal(long total) {
 			this.total += total;
 		}
 		public String getTeam() {
 			return team;
 		}
-		public int getWin() {
+		public long getWin() {
 			return win;
 		}
-		public int getTie() {
+		public long getTie() {
 			return tie;
 		}
-		public int getNet() {
+		public long getNet() {
 			return net;
 		}
-		public int getTotal() {
+		public long getTotal() {
 			return total;
 		}
-		public int getScore() {
+		public long getScore() {
 			return win * 3 + tie;
 		}
 	}
