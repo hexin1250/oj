@@ -383,3 +383,7 @@ int getCount(n, max){
 	done
 }
 ```
+
+## [1248 寒冰王座](http://acm.hdu.edu.cn/showproblem.php?pid=1248)
+完全背包问题：动态规划。只要debug一遍[code](https://github.com/hexin1250/oj/blob/master/src/main/java/michael/slf4j/learning/hdu/C1248.java)就明白了。
+
