@@ -387,3 +387,8 @@ int getCount(n, max){
 ## [1248 寒冰王座](http://acm.hdu.edu.cn/showproblem.php?pid=1248)
 完全背包问题：动态规划。只要debug一遍[code](https://github.com/hexin1250/oj/blob/master/src/main/java/michael/slf4j/learning/hdu/C1248.java)就明白了。
 
+## [1254 推箱子](http://acm.hdu.edu.cn/showproblem.php?pid=1254)
+非常非常好的一道题，特别考验细节。
+* 一定要两次bfs，一次是箱子的bfs，另一次是人的bfs。
+* 在人的bfs中，一定要把箱子当作障碍物。
+* 计算状态时，要把人和箱子都算在内。
