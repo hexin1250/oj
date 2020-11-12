@@ -277,7 +277,7 @@ y为单局输的概率，x为单局赢的概率。n为自己游泳糖果数，c�
 4. 重复2/3步骤，直到只有一个eSet，且size=n。
 
 ## [1243 反恐训练营](http://acm.hdu.edu.cn/showproblem.php?pid=1243)
-最长公共子序列的变形。问题同[Common Subsequence](https://github.com/hexin1250/oj#1159-common-subsequence)一致。还是来描述一下过程吧。
+最长公共子序列的变形。问题同[1159 Common Subsequence](https://github.com/hexin1250/oj#1159-common-subsequence)一致。还是来描述一下过程吧。
 
 ### 最长公共子序列
 #### 核心思想 i j处字符相同时，dp{i}{j}=dp{i-1}{j-1}+1，否则dp{i}{j}=max(dp{i-1}{j},dp{i}{j-1})
@@ -398,3 +398,6 @@ int getCount(n, max){
 1. 当再次遍历到某一个节点时，概率要进行相加。
 2. 当概率相同时，按照字典序进行输出，但是这里的概率相同指的是每一层的概率都相同且为最大值的情况下。
 3. 在对字典树遍历时，若该层已经找不到任何符合条件的结果，后续层无需查找，直接返回null。
+
+## [1301 Jungle Roads](http://acm.hdu.edu.cn/showproblem.php?pid=1301)
+最小生成树问题。同[1233 还是畅通工程](http://acm.hdu.edu.cn/showproblem.php?pid=1233)。
