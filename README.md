@@ -401,3 +401,6 @@ int getCount(n, max){
 
 ## [1301 Jungle Roads](http://acm.hdu.edu.cn/showproblem.php?pid=1301)
 最小生成树问题。同[1233 还是畅通工程](http://acm.hdu.edu.cn/showproblem.php?pid=1233)。
+
+## [1323 Perfection](http://acm.hdu.edu.cn/showproblem.php?pid=1323)
+完美数就5个，只需要判断n是不是完美数，如果不是完美数，判断因子总和sum与n的关系，如果sum<n则DEFICIENT，如果大于，则判断是否是完美数的倍数，如果不是则DEFICIENT，是则ABUNDANT。
