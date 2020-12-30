@@ -407,3 +407,6 @@ int getCount(n, max){
 
 ## [1354 Choose Your Own Adventure](http://acm.hdu.edu.cn/showproblem.php?pid=1354)
 广度优先搜索。
+
+## [1397 Goldbach's Conjecture](http://acm.hdu.edu.cn/showproblem.php?pid=1397)
+用二分查找一样超时，所以只能把所有结果存在数组里，毕竟查找时间复杂度是O(1)。
