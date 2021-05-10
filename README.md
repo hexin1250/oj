@@ -439,3 +439,10 @@ D(n) = (n-1) [D(n-2) + D(n-1)]
     * a = a % b, b = b
     * a = a % b + b, b = b
 3. 当a < 2 * b时，逐步推导，直到出现1或2步为止。
+
+## [1527 取石子游戏](http://acm.hdu.edu.cn/showproblem.php?pid=1527)
+
+博弈题：[威佐夫博奕](https://baike.baidu.com/item/%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88/19858256?fromtitle=%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%A5%95&fromid=7139745)。
+* 奇异局势的特征(a[k], b[k])，其中b[k] = a[k] + k。
+* 证明奇异局势为必败局势。
+* 非奇异局势可以转换为奇异局势。
