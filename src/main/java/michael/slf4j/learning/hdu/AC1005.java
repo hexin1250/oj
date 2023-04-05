@@ -14,6 +14,7 @@ public class AC1005 {
 			else
 				break;
 		}
+		
 		sc.close();
 	}
 	
