@@ -11,22 +11,21 @@ public class C313 {
 	}
 
 	public int nthSuperUglyNumber(int n, int[] primes) {
-		int[] dp = new int[n + 1];
+		long[] dp = new long[n + 1];
 		int m = primes.length;
 		int[] pointers = new int[m];
-		int[] nums = new int[m];
+		long[] nums = new long[m];
 		Arrays.fill(nums, 1);
 		for (int i = 1; i <= n; i++) {
-			int minNum = Arrays.stream(nums).min().getAsInt();
+			long minNum = Arrays.stream(nums).min().getAsLong();
 			dp[i] = minNum;
 			for (int j = 0; j < m; j++) {
 				if (nums[j] == minNum) {
 					pointers[j]++;
 					nums[j] = dp[pointers[j]] * primes[j];
-					System.out.println("\t" + j + ":" + nums[j] + "," + pointers[j] + "," + primes[j]);
 				}
 			}
 		}
-		return dp[n];
+		return (int) dp[n];
 	}
 }
