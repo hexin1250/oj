@@ -19,7 +19,6 @@ public class C343 {
 		if(x == 1) {
 			x = x + 3;
 			target = target - x;
-			x = 4;
 		} else if (x == 2) {
 			target = target - x;
 		} else {
