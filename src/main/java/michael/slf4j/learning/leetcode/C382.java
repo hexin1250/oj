@@ -11,8 +11,8 @@ public class C382 {
 
 	public static class Solution {
 		List<Integer> list = new ArrayList<>();
-		int len = 10000;
-		int currentSize = -1;
+		int maxBound = 10000;
+		int len = -1;
 		Random r = new Random();
 		
 		ListNode head = null;
@@ -29,9 +29,9 @@ public class C382 {
 		private int getValidIndex() {
 			int index = -1;
 			while(true) {
-				int scope = len;
-				if(currentSize > 0) {
-					scope = currentSize;
+				int scope = maxBound;
+				if(len > 0) {
+					scope = len;
 				}
 				index = r.nextInt(scope);
 				int size = list.size();
@@ -43,7 +43,7 @@ public class C382 {
 					head = head.next;
 				}
 				if(head == null) {
-					currentSize = list.size();
+					len = list.size();
 				}
 			}
 			return index;
