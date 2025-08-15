@@ -6,6 +6,7 @@ public class C384 {
 
 	public static void main(String[] args) {
 	}
+	
 	public static class Solution{
 		private int[] nums;
 		private int[] staging;
@@ -22,9 +23,13 @@ public class C384 {
 	    }
 	    
 	    public int[] shuffle() {
-	        int len = staging.length;
-	        for (int i = 0; i < len - 1; i++) {
-				int swapIndex = r.nextInt(len - i) + i;
+	        int n = staging.length;
+	        for (int i = 0; i < n - 1; i++) {
+	        	/**
+	        	 * r.nextInt(n - i) + i就是相当于在[i, n)
+	        	 * 这里i从0开始
+	        	 */
+				int swapIndex = r.nextInt(n - i) + i;
 				int tmp = staging[i];
 				staging[i] = staging[swapIndex];
 				staging[swapIndex] = tmp;

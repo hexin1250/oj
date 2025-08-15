@@ -11,8 +11,8 @@ public class C382 {
 
 	public static class Solution {
 		List<Integer> list = new ArrayList<>();
-		int maxBound = 10000;
-		int len = -1;
+		int maxBound = 10000; //根据题目限制的最大边界
+		int len = -1;//当前数组list是否包含全部链表数据，即数组是否完整。正整数为是，-1为否
 		Random r = new Random();
 		
 		ListNode head = null;
@@ -29,20 +29,21 @@ public class C382 {
 		private int getValidIndex() {
 			int index = -1;
 			while(true) {
-				int scope = maxBound;
-				if(len > 0) {
-					scope = len;
+				int currentBound = maxBound;
+				if(len > 0) {//若数组完整，则用数组list的长度
+					currentBound = len;
 				}
-				index = r.nextInt(scope);
+				index = r.nextInt(currentBound);
 				int size = list.size();
-				if(size >= scope) {
+				if(size >= currentBound) {//此时list包含index下标，index可以直接使用
 					break;
 				}
+				//此时数组list不包含index下标，需要从链表中获取
 				for (int i = 0; i < index + 1 - size && head != null; i++) {
 					list.add(head.val);
 					head = head.next;
 				}
-				if(head == null) {
+				if(head == null) {//判断链表是否遍历完成
 					len = list.size();
 				}
 			}
