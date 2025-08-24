@@ -23,12 +23,11 @@ public class C39 {
 		}
 		int size = queue.size();
 		for (int i = index; i < candidates.length; i++) {
-			int num = candidates[i];
-			if(num > target) {
+			if(candidates[i] > target) {
 				break;
 			}
-			queue.add(num);
-			ret.addAll(traversal(candidates, target - num, i, queue));
+			queue.add(candidates[i]);
+			ret.addAll(traversal(candidates, target - candidates[i], i, queue));
 			queue.remove(size);
 		}
 		return ret;
