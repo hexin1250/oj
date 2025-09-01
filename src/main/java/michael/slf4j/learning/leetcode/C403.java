@@ -12,43 +12,52 @@ public class C403 {
 		System.out.println(c.canCross(nums));
 	}
 	
-	private Set<Point> mem = new HashSet<>();
+	private Set<Point> memory = new HashSet<>();
 
 	public boolean canCross(int[] stones) {
-		return traversal(stones, 0, 1);
+		if(stones[1] != 1) {
+			return false;
+		}
+		for (int i = 2; i >= 0; i--) {
+			boolean ret = dfs(stones, 1, i);
+			if(ret) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
-	public boolean traversal(int[] stones, int index, int step) {
+	public boolean dfs(int[] stones, int index, int k) {
 		if(index == stones.length - 1) {
 			return true;
 		}
-		Point p = new Point(index, step);
-		if(mem.contains(p)) {
+		Point p = new Point(index, k);
+		if(memory.contains(p)) {
 			return false;
 		}
 		boolean ret = false;
 		for (int i = index + 1; i < stones.length; i++) {
 			int num = stones[i];
-			if(num > stones[index] + step) {
+			if(num > stones[index] + k) {
 				break;
 			}
-			if(num == stones[index] + step) {
-				int k = num - stones[index];
-				ret = traversal(stones, i, k + 1);
+			if(num == stones[index] + k) {
+				int nextK = num - stones[index];
+				ret = dfs(stones, i, nextK + 1);
 				if(ret) {
 					return true;
 				}
-				ret = traversal(stones, i, k);
+				ret = dfs(stones, i, nextK);
 				if(ret) {
 					return true;
 				}
-				ret = traversal(stones, i, k - 1);
+				ret = dfs(stones, i, nextK - 1);
 				if(ret) {
 					return true;
 				}
 			}
 		}
-		mem.add(p);
+		memory.add(p);
 		return ret;
 	}
 

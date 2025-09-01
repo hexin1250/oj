@@ -39,6 +39,59 @@ public class C399 {
 	public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
 		Map<String, Map<String, Double>> map = new HashMap<>();
 		Set<String> set = new HashSet<>();
+		arrangeDataset(equations, values, map, set);
+		Map<String, Map<String, Double>> valueMap = new HashMap<>();
+		Map<String, String> subjectMap = new HashMap<>();
+		buildVariable(map, set, valueMap, subjectMap);
+		double[] ret = getAnswer(queries, valueMap, subjectMap);
+		return ret;
+	}
+
+	private double[] getAnswer(List<List<String>> queries,
+			Map<String, Map<String, Double>> valueMap,
+			Map<String, String> subjectMap) {
+		int len = queries.size();
+		double[] ret = new double[len];
+		for (int i = 0; i < len; i++) {
+			List<String> list = queries.get(i);
+			String a = list.get(0);
+			String b = list.get(1);
+			String subjectA = subjectMap.get(a);
+			String subjectB = subjectMap.get(b);
+			if(subjectA == null || !subjectA.equals(subjectB)) {
+				ret[i] = -1D;
+			} else {
+				Map<String, Double> subValueMap = valueMap.get(subjectA);
+				double valueA = subValueMap.get(a);
+				double valueB = subValueMap.get(b);
+				ret[i] = valueA / valueB;
+			}
+		}
+		return ret;
+	}
+
+	private void buildVariable(Map<String, Map<String, Double>> map,
+			Set<String> set,
+			Map<String, Map<String, Double>> valueMap,
+			Map<String, String> subjectMap) {
+		Set<String> mem = new HashSet<>();
+		for (String x : set) {
+			if(mem.contains(x)) {
+				continue;
+			}
+			Map<String, Double> subValueMap = new HashMap<>();
+			subValueMap.put(x, 1D);
+			valueMap.put(x, subValueMap);
+			mem.add(x);
+			subjectMap.put(x, x);
+			addData(x, x, valueMap, map, mem, subjectMap);
+		}
+	}
+
+	private void arrangeDataset(List<List<String>> equations,
+			double[] values,
+			Map<String, Map<String, Double>> map,
+			Set<String> set) {
 		for (int i = 0; i < equations.size(); i++) {
 			List<String> list = equations.get(i);
 			String a = list.get(0);
@@ -61,41 +114,11 @@ public class C399 {
 			set.add(a);
 			set.add(b);
 		}
-		Set<String> mem = new HashSet<>();
-		Map<String, Map<String, Double>> valueMap = new HashMap<>();
-		Map<String, String> subjectMap = new HashMap<>();
-		for (String x : set) {
-			if(mem.contains(x)) {
-				continue;
-			}
-			Map<String, Double> subValueMap = new HashMap<>();
-			subValueMap.put(x, 1D);
-			valueMap.put(x, subValueMap);
-			mem.add(x);
-			subjectMap.put(x, x);
-			addData(x, x, valueMap, map, mem, subjectMap);
-		}
-		int len = queries.size();
-		double[] ret = new double[len];
-		for (int i = 0; i < len; i++) {
-			List<String> list = queries.get(i);
-			String a = list.get(0);
-			String b = list.get(1);
-			String subjectA = subjectMap.get(a);
-			String subjectB = subjectMap.get(b);
-			if(subjectA == null || !subjectA.equals(subjectB)) {
-				ret[i] = -1D;
-			} else {
-				Map<String, Double> subValueMap = valueMap.get(subjectA);
-				double valueA = subValueMap.get(a);
-				double valueB = subValueMap.get(b);
-				ret[i] = valueA / valueB;
-			}
-		}
-		return ret;
 	}
 
-	private void addData(String subject, String x, Map<String, Map<String, Double>> valueMap, Map<String, Map<String, Double>> map,
+	private void addData(String subject, String x,
+			Map<String, Map<String, Double>> valueMap,
+			Map<String, Map<String, Double>> map,
 			Set<String> mem, Map<String, String> subjectMap) {
 		Map<String, Double> subValueMap = valueMap.get(subject);
 		double valueX = subValueMap.get(x);
