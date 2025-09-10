@@ -46,8 +46,24 @@ public class C432New {
 	public C432New() {
 	}
 	
-	private TreeMap<Integer, MyNode> sizeMap = new TreeMap<>();
+	private TreeMap<Integer, MyNode> countMap = new TreeMap<>();
 	private Map<String, MyNode> keyMap = new HashMap<>();
+	
+	private static class MyNode {
+		MyNode pre = null;
+		MyNode next = null;
+		private String key;
+		private int count;
+		
+		public MyNode(String key) {
+			this.key = key;
+			this.count = 1;
+		}
+		
+		public String toString() {
+			return key + ":" + count;
+		}
+	}
 
 	public void inc(String key) {
 		if(keyMap.containsKey(key)) {
@@ -83,22 +99,22 @@ public class C432New {
 	}
 
 	private void addNewNode(MyNode node) {
-		MyNode newNode = sizeMap.get(node.count);
+		MyNode newNode = countMap.get(node.count);
 		if(newNode == null) {
 			newNode = node;
-			sizeMap.put(node.count, newNode);
+			countMap.put(node.count, newNode);
 		} else {
 			newNode.next = node;
 			node.pre = newNode;
 			newNode = node;
-			sizeMap.put(node.count, newNode);
+			countMap.put(node.count, newNode);
 		}
 	}
 
 	private void cleanupOldNode(String key, MyNode node) {
-		MyNode oldNode = sizeMap.get(node.count);
+		MyNode oldNode = countMap.get(node.count);
 		if(oldNode.next == null && oldNode.pre == null) {
-			sizeMap.remove(oldNode.count);
+			countMap.remove(oldNode.count);
 		} else {
 			MyNode pre = null;
 			MyNode next = null;
@@ -112,13 +128,13 @@ public class C432New {
 			}
 			if(oldNode.key.equals(key)) {
 				oldNode = pre;
-				sizeMap.put(node.count, oldNode);
+				countMap.put(node.count, oldNode);
 			}
 		}
 	}
 
 	public String getMaxKey() {
-		Entry<Integer, MyNode> entry = sizeMap.lastEntry();
+		Entry<Integer, MyNode> entry = countMap.lastEntry();
 		if(entry == null) {
 			return "";
 		}
@@ -126,27 +142,11 @@ public class C432New {
 	}
 
 	public String getMinKey() {
-		Entry<Integer, MyNode> entry = sizeMap.firstEntry();
+		Entry<Integer, MyNode> entry = countMap.firstEntry();
 		if(entry == null) {
 			return "";
 		}
 		return entry.getValue().key;
-	}
-	
-	private static class MyNode {
-		MyNode pre = null;
-		MyNode next = null;
-		private String key;
-		private int count;
-		
-		public MyNode(String key) {
-			this.key = key;
-			this.count = 1;
-		}
-		
-		public String toString() {
-			return key + ":" + count;
-		}
 	}
 
 }
