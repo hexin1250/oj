@@ -1,13 +1,16 @@
 package michael.slf4j.learning.leetcode;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class C440 {
 
 	public static void main(String[] args) {
 		C440 c = new C440();
 //		int n = 100;
 //		int k = 10;
-		int n = 13;
-		int k = 8;
+		int n = 236;
+		int k = 25;
 //		int n = 169;
 //		int k = 154;
 		System.out.println(c.findKthNumber(n, k));
@@ -44,6 +47,9 @@ public class C440 {
 			num = n % decimal;
 			excludedPermutationArr[i] = decimal - num - 1;
 		}
+		System.out.println(Arrays.stream(allPermutationArr).mapToObj(i -> i + "").collect(Collectors.joining(",")));
+		System.out.println(Arrays.stream(excludedPermutationArr).mapToObj(i -> i + "").collect(Collectors.joining(",")));
+		System.out.println(Arrays.stream(inputArr).mapToObj(i -> i + "").collect(Collectors.joining(",")));
 		return traversal(k, 1, 0, depth - 1, 0, 0);
 	}
 

@@ -4,16 +4,10 @@ public class C405 {
 
 	public static void main(String[] args) {
 		C405 c = new C405();
-		System.out.println(c.toHex(26));
+		System.out.println(c.toHex(-2098));
 	}
 	
 	public String toHex(int num) {
-		int[] nums = new int[8];
-		int count = 1;
-		for (int i = 1; i <= 8; i++) {
-			nums[8 - i] = count;
-			count <<= 4;
-		}
 		int[] arr = null;
 		if(num < 0) {
 			arr = new int[] {15,15,15,15,15,15,15,15};
@@ -23,9 +17,11 @@ public class C405 {
 		}
 		boolean first = true;
 		StringBuffer sb = new StringBuffer();
+		int mod = 1 << 28;
 		for (int i = 0; i < 8; i++) {
-			arr[i] += num / nums[i];
-			num = num % nums[i];
+			arr[i] += num / mod;
+			num = num % mod;
+			mod = mod >> 4;
 			if(arr[i] == 0 && first == true) {
 				continue;
 			}
