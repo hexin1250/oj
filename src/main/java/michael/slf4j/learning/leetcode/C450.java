@@ -28,28 +28,28 @@ public class C450 {
 		if(root == null) {
 			return root;
 		}
-		TreeNode parent = null;
-		TreeNode node = root;
-		while(node != null) {
-			if(node.val == key) {
+		TreeNode parentNode = null;
+		TreeNode deleteNode = root;
+		while(deleteNode != null) {
+			if(deleteNode.val == key) {
 				break;
 			}
-			parent = node;
-			if(key < node.val) {
-				node = node.left;
+			parentNode = deleteNode;
+			if(key < deleteNode.val) {
+				deleteNode = deleteNode.left;
 			} else {
-				node = node.right;
+				deleteNode = deleteNode.right;
 			}
 		}
-		if(node == null) {
+		if(deleteNode == null) {
 			return root;
 		}
 		
-		TreeNode newNode = null;
-		if(node.right == null) {
-			newNode = node.left;
+		TreeNode replaceNode = null;
+		if(deleteNode.right == null) {
+			replaceNode = deleteNode.left;
 		} else {
-			TreeNode leftOfRight = node.right;
+			TreeNode leftOfRight = deleteNode.right;
 			TreeNode pre = null;
 			while(leftOfRight != null) {
 				if(leftOfRight.left == null) {
@@ -58,22 +58,22 @@ public class C450 {
 				pre = leftOfRight;
 				leftOfRight = leftOfRight.left;
 			}
-			leftOfRight.left = node.left;
+			leftOfRight.left = deleteNode.left;
 			if(pre != null) {
 				pre.left = leftOfRight.right;
-				leftOfRight.right = node.right;
+				leftOfRight.right = deleteNode.right;
 			}
 			
-			newNode = leftOfRight;
+			replaceNode = leftOfRight;
 		}
-		if(parent != null) {
-			if(key < parent.val) {
-				parent.left = newNode;
+		if(parentNode != null) {
+			if(key < parentNode.val) {
+				parentNode.left = replaceNode;
 			} else {
-				parent.right = newNode;
+				parentNode.right = replaceNode;
 			}
 		} else {
-			root = newNode;
+			root = replaceNode;
 		}
 		return root;
 	}
